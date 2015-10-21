@@ -1,7 +1,7 @@
 # Bash Geoscripts
 
 Several Bash Geoscripts:
-- Reprojecting to "No Greenwich" centered projection: Reprojecting global vector data from Bash with ogr2ogr to "Greenwich centered" projection ("destroyed" geometries problem).
+- Reprojecting to "No Greenwich" centered projection: Reprojecting global vector data from Bash with ogr2ogr to "No Greenwich" centered projection ("destroyed" geometries problem).
 - etc.
 
 ## About author
