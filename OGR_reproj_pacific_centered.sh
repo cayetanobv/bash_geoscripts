@@ -22,20 +22,20 @@
 
 ######################################################################
 # Reprojecting global vector data from Bash with ogr2ogr             #
-# with a no "Greenwich centered" projection ("destroyed"             #
+# to "No Greenwich centered" projection ("destroyed"                 #
 # geometries problem)                                                #
 ######################################################################
 
 # Reprojecting Shapefile from EPSG:4326 to EPSG:3832
 # http://epsg.io/3832
 
-# This parameter is not necessary with 
+# This parameter is not necessary with
 # Natural Earth data...
 export OGR_ENABLE_PARTIAL_REPROJECTION=TRUE
 
 # Source layer and base folder for new data
-src=/home/cayetano/Documentos/capas/NaturalEarth/10m_cultural/10m_cultural/ne_10m_admin_0_countries.shp
-dst_basedir=/home/cayetano/Descargas/world_150
+src=/locationfolder/10m_cultural/ne_10m_admin_0_countries.shp
+dst_basedir=/locationfolder/world_150
 
 # New layers
 dst_4326=$dst_basedir"/world_150_4326.shp"
@@ -46,7 +46,7 @@ dst_3832=$dst_basedir"/world_150_3832.shp"
 # first half of the world
 ogr2ogr $dst_4326 $src -clipsrc -30 -85 180 85
 
-# Clipping source layer with EPSG:3832 maximum extension: 
+# Clipping source layer with EPSG:3832 maximum extension:
 # second half of the world
 ogr2ogr $dst_4326_tmp".shp" $src -clipsrc -180 -85 -30.0000000001 85
 
@@ -58,4 +58,3 @@ rm $dst_4326_tmp"."*
 
 # Reprojecting source data to EPSG:3832
 ogr2ogr -t_srs EPSG:3832 $dst_3832 $dst_4326
-
